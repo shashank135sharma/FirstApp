@@ -10,9 +10,33 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
+    var color = "white"
+    
+    @IBOutlet weak var myLabel: UILabel!
+    
+    @IBAction func buttonTapped(_ sender: Any) {
+
+        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotationAnimation.duration = 1
+        rotationAnimation.fromValue = 0
+        rotationAnimation.toValue = Double.pi * 2.0
+        imageView.layer.add(rotationAnimation, forKey: "rotate")
+        
+        if (color == "white"){
+            view.backgroundColor = UIColor.green
+            color = "green"
+        } else {
+            view.backgroundColor = UIColor.white
+            color = "white"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
